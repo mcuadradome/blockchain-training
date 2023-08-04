@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/utils/SafeMath.sol": "SafeMath"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/utils/SafeMath.sol": {
+			"keccak256": "0x2cc1e5b242f0ccd2fc10914bdaeca73df9fb12a55d8cf81ba1b178b49dee553d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://af4df26ea49bb182243335b36d1f8d8fb239ff239355fd9de86b23bcc7d1a3a5",
+				"dweb:/ipfs/Qmf8WBfMHzzxHFsVwxtEj9QjRosoVhxzDmKkb6KTSXFVtW"
+			]
+		}
+	},
+	"version": 1
+}
