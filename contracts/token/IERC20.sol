@@ -73,4 +73,6 @@ interface IERC20 {
      * Emits a {Transfer} event.
      */
     function transferFrom(address from, address to, uint256 amount) external returns (bool);
+
+    function transferenciaPago(address sender, address recipient, uint256 amount) external returns (bool);
 }

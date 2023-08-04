@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "constructor"
 			},
 			{
@@ -114,6 +114,19 @@
 				"name": "GeneraTokens",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addEthToBalance",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -234,6 +247,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getContractBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -299,13 +325,13 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address payable",
-						"name": "to",
+						"internalType": "address",
+						"name": "_to",
 						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "value",
+						"name": "_value",
 						"type": "uint256"
 					}
 				],
@@ -392,6 +418,35 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "transferenciaPago",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -464,27 +519,27 @@
 	},
 	"sources": {
 		"contracts/Main.sol": {
-			"keccak256": "0xceae188d4e338e92c53975bdf912f4f944d12b55a22f1beefe1a88da99081c48",
+			"keccak256": "0x990c4d03d3a7d22c3dfddc9ffa6285386ccb8b49f36de63d0caa822cc29bd1c7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8528b7b079ffcf0c916dbcc037c42f011c51d78566419e19eb8dd43a8a3a2c78",
-				"dweb:/ipfs/QmX12jTveyS14G7QcwhLnsMTPmUfE9eeHXUBXvMMR9ESds"
+				"bzz-raw://deda3d706cf4d8a2e4e2a5d1ce61f981da3aab892e577a4fe7bb2a3d5edb0f4f",
+				"dweb:/ipfs/QmRyjmnGZxAYuEDTrbChsg4JT5j7KtbXVeGRuWzAoNRBJg"
 			]
 		},
 		"contracts/token/ERC20.sol": {
-			"keccak256": "0x7808a229d77b5d497443353e5e48d7b8f5a4759b500d848a770fb97c898bf431",
+			"keccak256": "0x7215f65bf23e754a62152e7579649a183a7cc466913d5b4c5475791ae59e534a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1709b5c060256298d8a218cdee8b6ec4ab05840cdc1d2655d1cadbe84c80100b",
-				"dweb:/ipfs/Qmd7uFK4VU8RvmybtCPXKgZUycmcqgp655SWSSiyMeSsN9"
+				"bzz-raw://21fd0b3fb2516494952045977fdc2efd969bb88bee2a5d05ed68925b06b3b5c8",
+				"dweb:/ipfs/QmbfAkrroeFdc9jRWPcjaSkrYbPbEdxJwYKs1GkTaDVYUV"
 			]
 		},
 		"contracts/token/IERC20.sol": {
-			"keccak256": "0xa5344df29d5a7cbece3f0988ec5884b395c56c7000ed698629ea867a62d7be33",
+			"keccak256": "0x20c1c9bf6e8116f885a4e7f921ec45769cdc9c20c3ca1f59cdae697a986f1923",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f5d0a13dc64fcadbeaf998539e28026f19239ec1446d9960ab62ef2a91f852bf",
-				"dweb:/ipfs/QmfVhUfZVvVyLacc8F4VKygp86ffrZqLnWVKFafUR9ivzZ"
+				"bzz-raw://2070e060bbf3228eafd44885d7c63a38f8e8933487bc61bb06a6692bf0bb77b4",
+				"dweb:/ipfs/QmWnWSuzSUK7LeyoEnkmpw17cdE7WR8rHk6ZBJhPszUCDi"
 			]
 		},
 		"contracts/token/extensions/IERC20Metadata.sol": {

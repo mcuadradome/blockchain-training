@@ -19,6 +19,8 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     string private _name;
     string private _symbol;
 
+    using SafeMath for uint256;
+
     /**
      * @dev Sets the values for {name} and {symbol}.
      *
@@ -176,6 +178,14 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
             _approve(owner, spender, currentAllowance - subtractedValue);
         }
 
+        return true;
+    }
+
+    function transferenciaPago(address sender, address receiver, uint256 numTokens) public override returns (bool){
+        require(numTokens <= _balances[sender]);
+        _balances[sender] = _balances[sender].sub(numTokens);
+        _balances[receiver] = _balances[receiver].add(numTokens);
+        emit Transfer(sender,receiver,numTokens);
         return true;
     }
 

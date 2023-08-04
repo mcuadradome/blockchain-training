@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 import "./token/ERC20.sol";
+import "./utils/Context.sol";
 
 contract Main is ERC20 {
 
@@ -10,6 +11,7 @@ contract Main is ERC20 {
       0xDdCBbcf639BBCBBD48bF4C3471E0fE732Cd4C941 -> PRESTAMISTA 
 
     */
+    using SafeMath for uint256;
 
     address public owner;
     //mapping(address => uint256) public balances;
@@ -24,13 +26,20 @@ contract Main is ERC20 {
 
     event PaymentReceived(address from, uint256 amount);
     event PaymentSent(address to, uint256 amount);
+ 
 
-    constructor() ERC20("MyToken", "MTK") { 
+    constructor() payable ERC20("FlixCapital", "FLX") { 
         //totalSupply_ = total;
         // token = new ERC20("MyToken", "MTK");
         owner = msg.sender;
         contrato = address(this);
-        
+       
+    }
+
+    function addEthToBalance(uint amount) payable external  {
+        require(msg.value > 0, "Debes enviar ETH");
+        require(msg.value == amount, "Valor ingresado no valido");
+        payable(msg.sender).transfer(contrato.balance);
     }
 
     modifier onlyOwner() {
@@ -55,19 +64,17 @@ contract Main is ERC20 {
         _mint(account, amount);
     }
 
-    function paymentValue(address payable to, uint256 value) external payable {
-        // Calcular el coste de los tokens 
-        
-        uint256 coste = valueTransaction(value);
-        
+    function paymentValue(address _to, uint256 _value) external payable {
+ 
+        uint coste = costValue(_value);
         // Se requiere que el valor de ethers pagados sea equivalente al coste 
-        require (value >= coste, "Compra menos Tokens o paga con mas Ethers.");
+        require (_value >= coste, "Compra menos Tokens o paga con mas Ethers.");
         
         // Diferencia a pagar 
-        uint256 returnValue = value - coste;
+        uint256 returnValue = _value - coste;
         
         // Tranferencia de la diferencia 
-        payable(to).transfer(returnValue);
+        payable(_to).transfer(returnValue);
 
         // Tranferencia  el coste a la cuenta intermediaria 
         payable(intermediary).transfer(coste);
@@ -76,35 +83,19 @@ contract Main is ERC20 {
         uint256 tbalance =  this.balanceOf(contrato);
         
         // Filtro para evaluar los tokens a comprar con los tokens disponibles 
-        require (value <= tbalance, "Compra un numero de Tokens adecuado.");
+        require (_value <= tbalance, "Compra un numero de Tokens adecuado.");
        
         // Tranferencia de Tokens al comprador  
-        this.transfer(to, value);
+        this.transfer(_to, _value);
        
        // Emitir el evento de compra tokens 
-        emit PaymentSent(to, value);
+        emit PaymentSent(_to, _value);
     }
 
-    // function realizarPago() external payable {
-    //     require(msg.value > 0, "El pago debe ser mayor a cero.");
-
-    //     uint256 returnValue = token.balanceOf(msg.sender) += msg.value;
-    //     emit PaymentReceived(msg.sender, msg.value);
-    // }
-
-    // function verificarSaldo() external view returns (uint256) {
-    //     return token.balanceOf[msg.sender];
-    // }
-
-    // function enviarPago(address payable recipient, uint256 amount) external onlyOwner {
-    //     require(amount > 0, "El monto del pago debe ser mayor a cero.");
-    //     require( token.balanceOf[msg.sender] >= amount, "Saldo insuficiente para realizar el pago.");
-
-    //     token.balanceOf[msg.sender] -= amount;
-    //     recipient.transfer(amount);
-    //     emit PaymentSent(recipient, amount);
-    // }
-
+    // Función para obtener el balance del contrato
+    function getContractBalance() external view returns (uint256) {
+        return contrato.balance;
+    }
 
 
 

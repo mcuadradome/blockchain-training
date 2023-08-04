@@ -290,6 +290,35 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "transferenciaPago",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -365,19 +394,19 @@
 	},
 	"sources": {
 		"contracts/token/ERC20.sol": {
-			"keccak256": "0x7808a229d77b5d497443353e5e48d7b8f5a4759b500d848a770fb97c898bf431",
+			"keccak256": "0x7215f65bf23e754a62152e7579649a183a7cc466913d5b4c5475791ae59e534a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1709b5c060256298d8a218cdee8b6ec4ab05840cdc1d2655d1cadbe84c80100b",
-				"dweb:/ipfs/Qmd7uFK4VU8RvmybtCPXKgZUycmcqgp655SWSSiyMeSsN9"
+				"bzz-raw://21fd0b3fb2516494952045977fdc2efd969bb88bee2a5d05ed68925b06b3b5c8",
+				"dweb:/ipfs/QmbfAkrroeFdc9jRWPcjaSkrYbPbEdxJwYKs1GkTaDVYUV"
 			]
 		},
 		"contracts/token/IERC20.sol": {
-			"keccak256": "0xa5344df29d5a7cbece3f0988ec5884b395c56c7000ed698629ea867a62d7be33",
+			"keccak256": "0x20c1c9bf6e8116f885a4e7f921ec45769cdc9c20c3ca1f59cdae697a986f1923",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f5d0a13dc64fcadbeaf998539e28026f19239ec1446d9960ab62ef2a91f852bf",
-				"dweb:/ipfs/QmfVhUfZVvVyLacc8F4VKygp86ffrZqLnWVKFafUR9ivzZ"
+				"bzz-raw://2070e060bbf3228eafd44885d7c63a38f8e8933487bc61bb06a6692bf0bb77b4",
+				"dweb:/ipfs/QmWnWSuzSUK7LeyoEnkmpw17cdE7WR8rHk6ZBJhPszUCDi"
 			]
 		},
 		"contracts/token/extensions/IERC20Metadata.sol": {
