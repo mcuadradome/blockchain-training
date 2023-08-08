@@ -33,11 +33,11 @@
 	},
 	"sources": {
 		"contracts/utils/SafeMath.sol": {
-			"keccak256": "0x2cc1e5b242f0ccd2fc10914bdaeca73df9fb12a55d8cf81ba1b178b49dee553d",
+			"keccak256": "0xd751f38011da65ad68550a06028804dba5ca0d27b76b5a38114ce9fa1ebf0081",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://af4df26ea49bb182243335b36d1f8d8fb239ff239355fd9de86b23bcc7d1a3a5",
-				"dweb:/ipfs/Qmf8WBfMHzzxHFsVwxtEj9QjRosoVhxzDmKkb6KTSXFVtW"
+				"bzz-raw://4255d2b4bcbfa6b52757086488edd98cc8eb1aacceffb66f92e9724a68622845",
+				"dweb:/ipfs/QmRdWs7yTHKmbh1Htb8wPu9gnk6LyUJtPZ2AZGHYF3QbR3"
 			]
 		}
 	},
