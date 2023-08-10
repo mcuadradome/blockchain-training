@@ -22,7 +22,7 @@ contract Main {
     // Direcciones ;
     address payable  public contrato;
     address payable private intermediary = payable(0x72f188f3767fE8FE835b7b22191f28A3b19562D1);
-    uint256 public maxEthPerTransaction = 1 ether; // Máximo 1 ETH por transacción
+    uint256 private maxEthPerTransaction = 1 ether; // Máximo 1 ETH por transacción
 
     //uint256 totalSupply_;
 
@@ -42,7 +42,7 @@ contract Main {
         _;
     }
 
-    function isValidAddress(address _address) external view returns (bool) {
+    function isValidAddress(address _address) internal view returns (bool) {
         return (_address != address(0) && _address != address(contrato) && bytes20(_address).length == 20);
     }
 
@@ -58,7 +58,7 @@ contract Main {
     // Función para agregar ETH a una dirección específica
     function addEthToAddress(address payable _receiver) external payable onlyOwner() {
         //require(_receiver != address(0), "La direccion del receptor no puede ser 0x0");
-        require(this.isValidAddress(_receiver), "La direccion del receptor no es valida");
+        require(isValidAddress(_receiver), "La direccion del receptor no es valida");
         require(msg.value > 0 && msg.value <= maxEthPerTransaction, "Cantidad de ETH no valida");
         require(this.addressBalance(msg.sender) > 0, "La cuenta origen no tiene saldo"); 
        
@@ -71,7 +71,7 @@ contract Main {
     function payment(address payable _receiver) payable external onlyOwner(){
         require(msg.value > 0 && msg.value <= maxEthPerTransaction, "Cantidad de ETH no valida");
         require(this.addressBalance(msg.sender) == 0, "La cuenta origen no tiene saldo"); 
-        require(this.isValidAddress(_receiver), "La direccion del receptor no es valida");
+        require(isValidAddress(_receiver), "La direccion del receptor no es valida");
 
         uint256 twoPercent = SafeMath.discountTransaction(msg.value);
         uint256 remainingAmount = SafeMath.sub(msg.value, twoPercent);
@@ -130,7 +130,10 @@ contract Main {
         return _to.balance;
     }
 
-
+    // Obtenemos la direccion del Owner
+    function getOwner() external view returns (address) {
+        return owner;
+    }
 
     
 

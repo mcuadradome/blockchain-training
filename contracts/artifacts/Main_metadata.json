@@ -107,32 +107,13 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
 					{
 						"internalType": "address",
-						"name": "_address",
+						"name": "",
 						"type": "address"
-					}
-				],
-				"name": "isValidAddress",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "maxEthPerTransaction",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -193,11 +174,11 @@
 	},
 	"sources": {
 		"contracts/Main.sol": {
-			"keccak256": "0x4fb4aefbfee260e46f47de373c3737e9addf8a4930d4fda1bc0e504ee4bc391b",
+			"keccak256": "0xc12000561fba6872308de76e2357eceaaa042761aca146da13308e6381bab4fc",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7b0a8090aa316ed713bd28d7717f62a1c990f3f7b480e723cec1341891db42d4",
-				"dweb:/ipfs/QmYJP5CQyiCoy5b3Z7N9rLMXwt8VgxjRWUCj78yaUB1bMQ"
+				"bzz-raw://7742b6dee957dbf20e94af40fb0085c9e5ce27245d82d1704076e8298710ffe2",
+				"dweb:/ipfs/QmYaHozLo1iCmxKDTqNSAAtjXtNXDvyMrzCUVASV1zsGfD"
 			]
 		},
 		"contracts/token/ERC20.sol": {
