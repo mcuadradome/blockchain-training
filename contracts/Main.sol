@@ -17,7 +17,7 @@ contract Main {
     //mapping(address => uint256) public balances;
     
     // Direcciones ;
-    address payable  public contrato;
+    address payable public contrato;
     address payable private intermediary = payable(0x72f188f3767fE8FE835b7b22191f28A3b19562D1);
     uint256 private maxEthPerTransaction = 1 ether; // Máximo 1 ETH por transacción
 
@@ -53,17 +53,17 @@ contract Main {
     }
 
         // Función para dividir un monto entre dos direcciones
-    function payment(address payable _receiver) payable external {
-        require(msg.value > 0 && msg.value <= maxEthPerTransaction, "Cantidad de ETH no valida");
-        require(this.addressBalance(msg.sender) == 0, "La cuenta origen no tiene saldo"); 
+    function payment(address payable _receiver) external payable{
         require(isValidAddress(_receiver), "La direccion del receptor no es valida");
-
+        require(msg.value > 0 && msg.value <= maxEthPerTransaction, "Cantidad de ETH no valida");
+        require(this.addressBalance(msg.sender) > 0, "La cuenta origen no tiene saldo"); 
+        
         uint256 twoPercent = SafeMath.discountTransaction(msg.value);
         uint256 remainingAmount = SafeMath.sub(msg.value, twoPercent);
 
         // Enviar el 2% a RECEIVER_1
         intermediary.transfer(twoPercent);
-        emit PaymentReceived(_receiver, twoPercent);
+        emit PaymentSent(intermediary, twoPercent);
 
         // Enviar el restante a RECEIVER_2
         _receiver.transfer(remainingAmount);
